@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Resources Donor</string>
+    <string name="resources_donor_txt">Resources Donor</string>
+    <string name="beneficiarioBoton">BENEFICIARIO</string>
+    <string name="donadorBoton">DONADOR</string>
+    <string name="logo_app_txt">logo de la app</string>
+    <string name="registro_donadores_txt">Registro para Donadores</string>
+    <string name="volver_text">volver</string>
+    <string name="registro_para_beneficiarios_txt">Registro para Beneficiarios</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="correo">Correo</string>
+    <string name="password">Constraseña</string>
+    <string name="direccion">Dirección</string>
+    <string name="direccion_d">Dirección de la Donación</string>
+    <string name="login_txt">Login</string>
+    <string name="registrarse_txt">Registrarse</string>
+    <string name="volver_principal">volver principal</string>
+    <string name="log_out_txt">LOG-OUT</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="ver_centros_de_donacion_txt">ver centros de donacion</string>
+</resources>
