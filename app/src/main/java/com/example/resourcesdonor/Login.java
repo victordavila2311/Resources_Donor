@@ -74,6 +74,9 @@ public class Login extends AppCompatActivity {
                                     }else if(tipo.equals("Donador")){
                                         Intent registradoD = new Intent(getApplicationContext(),Donador.class);
                                         startActivity(registradoD);
+                                    }else if(tipo.equals("Administrador")){
+                                        Intent registradoA = new Intent(getApplicationContext(),admin.class);
+                                        startActivity(registradoA);
                                     }
                                 }
                             });

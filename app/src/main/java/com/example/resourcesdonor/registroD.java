@@ -13,10 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -31,7 +33,7 @@ import javax.annotation.Nullable;
 
 
 public class registroD extends AppCompatActivity {
-    EditText mNombre, mApellido, mCorreo, mContrasena, mDireccion;
+    EditText mNombre, mApellido, mCorreo, mContrasena, mDireccion, mCel;
     Button mBotonRD;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -49,6 +51,7 @@ public class registroD extends AppCompatActivity {
         mCorreo = findViewById(R.id.correo);
         mContrasena = findViewById(R.id.password);
         mDireccion = findViewById(R.id.direccion);
+        mCel = findViewById(R.id.celular);
         mBotonRD = findViewById(R.id.botonRD);
 
         fAuth = FirebaseAuth.getInstance();
@@ -84,6 +87,8 @@ public class registroD extends AppCompatActivity {
                 final String nombre = mNombre.getText().toString();
                 final String apellido = mApellido.getText().toString();
                 final String direccion = mDireccion.getText().toString();
+                final String celular = mCel.getText().toString();
+
 
                 if(correo.isEmpty()){
                     mCorreo.setError("ingrese un correo");
@@ -99,6 +104,20 @@ public class registroD extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            FirebaseUser fuser = fAuth.getCurrentUser();
+                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(registroD.this, "SE ENVIO UN EMAIL DE VERIFICACION", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("tag","Fallo" + e.getMessage());
+                                }
+                            });
+
+
                             Toast.makeText(registroD.this,"usuario creado", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("usuarios").document(userID);
@@ -109,6 +128,7 @@ public class registroD extends AppCompatActivity {
                             user.put("Direccion", direccion);
                             user.put("DireccionD", null);
                             user.put("Cant. Donaciones", 0);
+                            user.put("Celular", celular);
                             user.put("Tipo", "Donador");
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

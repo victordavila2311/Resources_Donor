@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="505dp"
         android:onClick="volverPrincipal"
         android:text="@string/volver_text"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,11 +122,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/direccion" />
+
+    <EditText
+        android:id="@+id/celular"
+        android:layout_width="330dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="81dp"
+        android:ems="10"
+        android:hint="@string/celular"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/direcciond" />
+
     <Button
         android:id="@+id/botonRB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="505dp"
         android:layout_marginEnd="40dp"
         android:text="@string/registrarse_txt"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +153,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="505dp"
         android:layout_marginEnd="20dp"
         android:onClick="irLogin"
         android:text="@string/login_txt"

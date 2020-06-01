@@ -73,6 +73,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+    public void addMarker(double lat, double longit){
+        LatLng marcador = new LatLng(lat, longit);
+        mMap.addMarker(new MarkerOptions().position(marcador).title("Marker in GLP").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
+    }
+
 
     /**
      * Manipulates the map once available.
@@ -96,7 +102,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
          */
         LatLng GLP = new LatLng(4.7746958572646605, -74.02984766971079);
         mMap.addMarker(new MarkerOptions().position(GLP).title("Marker in GLP").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(GLP, 15));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(GLP, 15));
         LatLng santafe = new LatLng(4.76237549584809, -74.04636673701569);
         mMap.addMarker(new MarkerOptions().position(santafe).title("Marker in Santafe").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         LatLng D1 = new LatLng(4.760818142294667, -74.03356052655084);

@@ -19,4 +19,7 @@
     <string name="log_out_txt">LOG-OUT</string>
     <string name="title_activity_maps">Map</string>
     <string name="ver_centros_de_donacion_txt">ver centros de donacion</string>
+    <string name="administrador">Administrador</string>
+    <string name="celular">Celular</string>
+    <string name="verificar_email">verificar e-mail</string>
 </resources>
