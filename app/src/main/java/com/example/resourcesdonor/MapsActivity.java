@@ -20,12 +20,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     SupportMapFragment mapFragment;
     FusedLocationProviderClient client;
+
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }else{
             ActivityCompat.requestPermissions(MapsActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
         }
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -73,11 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    public void addMarker(double lat, double longit){
-        LatLng marcador = new LatLng(lat, longit);
-        mMap.addMarker(new MarkerOptions().position(marcador).title("Marker in GLP").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
-    }
 
 
     /**
@@ -100,6 +106,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
          */
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        CollectionReference lats = fStore.collection("direcciones");
+        lats.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
+                    DireccionesClass dir = qds.toObject(DireccionesClass.class);
+                    double la = Double.parseDouble(dir.getLatitud());
+                    double lon = Double.parseDouble(dir.getLongitud());
+                    String des = dir.getDescripcion();
+                    LatLng marca = new LatLng(la,lon);
+
+                    mMap.addMarker(new MarkerOptions().position(marca).title(des).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                }
+
+            }
+        });
+        /*
         LatLng GLP = new LatLng(4.7746958572646605, -74.02984766971079);
         mMap.addMarker(new MarkerOptions().position(GLP).title("Marker in GLP").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(GLP, 15));
@@ -107,6 +133,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(santafe).title("Marker in Santafe").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         LatLng D1 = new LatLng(4.760818142294667, -74.03356052655084);
         mMap.addMarker(new MarkerOptions().position(D1).title("Marker in D1").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        */
+
+
 
         /*
         LatLng Casa = new LatLng(4.756826538227585, -74.03236344585075);

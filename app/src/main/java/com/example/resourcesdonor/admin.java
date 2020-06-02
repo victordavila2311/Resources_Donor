@@ -17,6 +17,12 @@ public class admin extends AppCompatActivity {
 
     }
 
+    public void irMarcador(View view){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(),AnadirMarcador.class));
+        finish();
+    }
+
 
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();

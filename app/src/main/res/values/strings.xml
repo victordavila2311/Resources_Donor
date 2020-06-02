@@ -22,4 +22,9 @@
     <string name="administrador">Administrador</string>
     <string name="celular">Celular</string>
     <string name="verificar_email">verificar e-mail</string>
+    <string name="anadir_marcador">Añadir Marcador</string>
+    <string name="descripcion_txt">Descripcion</string>
+    <string name="latitud_txt">Latitud</string>
+    <string name="longitud_txt">Longitud</string>
+    <string name="anadir">Añadir</string>
 </resources>

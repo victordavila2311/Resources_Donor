@@ -8,16 +8,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Donador extends AppCompatActivity {
     Button reenviar, mapaB;
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    TextView prueba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,8 @@ public class Donador extends AppCompatActivity {
         reenviar = findViewById(R.id.verificacion);
         mapaB = findViewById(R.id.button);
         fAuth = FirebaseAuth.getInstance();
+        fStore= FirebaseFirestore.getInstance();
+        CollectionReference lats = fStore.collection("direcciones");
 
         FirebaseUser fuser = fAuth.getCurrentUser();
         if(!(fuser.isEmailVerified())){
@@ -52,6 +61,21 @@ public class Donador extends AppCompatActivity {
             reenviar.setVisibility(View.GONE);
             mapaB.setVisibility(View.VISIBLE);
         }
+        /*
+        lats.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                String resultado="";
+                for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
+                    DireccionesClass dir = qds.toObject(DireccionesClass.class);
+                    double la = Double.parseDouble(dir.getLatitud());
+                    double lon = Double.parseDouble(dir.getLongitud());
+                    resultado += "latitud: "+la+"\nlongitud: "+lon+"\n";
+                }
+                prueba.setText(resultado);
+            }
+        });
+        */
     }
 
     public void irMapaD(View view){
