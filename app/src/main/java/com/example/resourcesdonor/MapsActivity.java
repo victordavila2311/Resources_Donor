@@ -119,7 +119,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     double lon = Double.parseDouble(dir.getLongitud());
                     String des = dir.getDescripcion();
                     LatLng marca = new LatLng(la,lon);
-
                     mMap.addMarker(new MarkerOptions().position(marca).title(des).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
                 }
 

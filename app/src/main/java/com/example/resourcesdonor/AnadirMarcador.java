@@ -39,18 +39,18 @@ public class AnadirMarcador extends AppCompatActivity {
         anadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth fAuth;
-                fAuth = FirebaseAuth.getInstance();
                 fStore = FirebaseFirestore.getInstance();
                 CollectionReference lats = fStore.collection("direcciones");
                 String lat = la.getText().toString();
                 String lo = lon.getText().toString();
                 String desc = des.getText().toString();
-                DireccionesClass d = new DireccionesClass(lat,lo,desc);
+                DireccionesClass dir = new DireccionesClass(lat,lo,desc);
+                /*
                 Map<String,Object> dir = new HashMap<>();
                 dir.put("latitud", d.getLatitud());
                 dir.put("longitud", d.getLongitud());
                 dir.put("descripcion", d.getDescripcion());
+                 */
                 lats.add(dir).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {

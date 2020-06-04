@@ -130,6 +130,7 @@ public class registroD extends AppCompatActivity {
                             user.put("Cant. Donaciones", 0);
                             user.put("Celular", celular);
                             user.put("Tipo", "Donador");
+                            user.put("Verificado", "Si");
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

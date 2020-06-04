@@ -27,4 +27,13 @@
     <string name="latitud_txt">Latitud</string>
     <string name="longitud_txt">Longitud</string>
     <string name="anadir">Añadir</string>
+    <string name="lista">Lista</string>
+    <string name="comedorlargo_txt">Incluya aqui una foto del documento de propiedad del comedor</string>
+    <string name="subir">Subir</string>
+    <string name="disclaimer">Si ya subio las fotos debe esperar a ser verficado</string>
+    <string name="cedula_msg_txt">Incluya aqui una foto de su cedula</string>
+    <string name="persona_msg_txt">Incluya aqui una foto suya sosteniendo su cedula</string>
+    <string name="enviar">enviar</string>
+    <string name="imagenes">Imagenes</string>
+    <string name="buscar">buscar</string>
 </resources>

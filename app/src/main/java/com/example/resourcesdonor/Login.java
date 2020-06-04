@@ -69,8 +69,15 @@ public class Login extends AppCompatActivity {
                                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                                     String tipo = documentSnapshot.getString("Tipo");
                                     if(tipo.equals("Beneficiario")){
-                                        Intent registradoB = new Intent(getApplicationContext(),Beneficiario.class);
-                                        startActivity(registradoB);
+                                        String verificado = documentSnapshot.getString("Verificado");
+                                        if(verificado.equals("No")){
+                                            Intent registradoB = new Intent(getApplicationContext(),VerificadoFotos.class);
+                                            startActivity(registradoB);
+                                        }else{
+                                            Intent registradoB = new Intent(getApplicationContext(),Beneficiario.class);
+                                            startActivity(registradoB);
+                                        }
+
                                     }else if(tipo.equals("Donador")){
                                         Intent registradoD = new Intent(getApplicationContext(),Donador.class);
                                         startActivity(registradoD);
