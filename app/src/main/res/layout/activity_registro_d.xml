@@ -116,16 +116,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="507dp"
         android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="cursive"
         android:onClick="irLogin"
         android:text="@string/login_txt"
+        android:textColor="#0000FF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/botonRD"
+        app:layout_constraintHorizontal_bias="0.633"
         app:layout_constraintStart_toEndOf="@+id/volver"
         app:layout_constraintTop_toTopOf="parent" />
 

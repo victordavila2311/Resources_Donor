@@ -36,4 +36,10 @@
     <string name="enviar">enviar</string>
     <string name="imagenes">Imagenes</string>
     <string name="buscar">buscar</string>
+    <string name="verificar_usuario">verificar usuario</string>
+    <string name="donaciones_pendientes">donaciones pendientes</string>
+    <string name="actualizar_donaciones">actualizar donaciones</string>
+    <string name="donaciones_recibidas">Donaciones Recibidas</string>
+    <string name="mis_datos">mis datos</string>
+    <string name="realizar_donacion">realizar donacion</string>
 </resources>

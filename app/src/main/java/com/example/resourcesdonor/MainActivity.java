@@ -4,14 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import java.sql.*;
 public class MainActivity extends AppCompatActivity {
-
+    private static int t = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent inicio = new Intent(getApplicationContext(), Inicio.class);
+            }
+        },t);
         /*
         try {
             Connection con= ConnectionClass.getConnection();

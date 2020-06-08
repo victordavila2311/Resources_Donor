@@ -21,10 +21,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class Donador extends AppCompatActivity {
-    Button reenviar, mapaB;
+    Button reenviar, mapaB, penB, donB, datosB;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    TextView prueba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +31,20 @@ public class Donador extends AppCompatActivity {
         setContentView(R.layout.activity_donador);
         reenviar = findViewById(R.id.verificacion);
         mapaB = findViewById(R.id.button);
+        penB = findViewById(R.id.pendB);
+        donB = findViewById(R.id.donacionDB);
+        datosB = findViewById(R.id.datosDB);
+
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
-        CollectionReference lats = fStore.collection("direcciones");
 
         FirebaseUser fuser = fAuth.getCurrentUser();
         if(!(fuser.isEmailVerified())){
             reenviar.setVisibility(View.VISIBLE);
             mapaB.setVisibility(View.GONE);
+            penB.setVisibility(View.GONE);
+            donB.setVisibility(View.GONE);
+            datosB.setVisibility(View.GONE);
             reenviar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -60,6 +65,9 @@ public class Donador extends AppCompatActivity {
         }else{
             reenviar.setVisibility(View.GONE);
             mapaB.setVisibility(View.VISIBLE);
+            penB.setVisibility(View.VISIBLE);
+            donB.setVisibility(View.VISIBLE);
+            datosB.setVisibility(View.VISIBLE);
         }
         /*
         lats.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

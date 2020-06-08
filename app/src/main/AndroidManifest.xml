@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ImagenesU"></activity>
+        <activity android:name=".Inicio"></activity>
+        <activity android:name=".Verificar" />
+        <activity android:name=".ImagenesU" />
         <activity android:name=".VerificadoFotos" />
         <activity android:name=".ListaU" />
         <activity android:name=".AnadirMarcador" />

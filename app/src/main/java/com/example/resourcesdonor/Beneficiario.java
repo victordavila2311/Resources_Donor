@@ -16,7 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Beneficiario extends AppCompatActivity {
-    Button reenviar;
+    Button reenviar, mapaB, aDon, pDon, rDon, datosB;
+
     FirebaseAuth fAuth;
 
 
@@ -26,11 +27,22 @@ public class Beneficiario extends AppCompatActivity {
         setContentView(R.layout.activity_beneficiario);
 
         reenviar = findViewById(R.id.verificacion);
+        mapaB = findViewById(R.id.button9);
+        aDon = findViewById(R.id.actuDon);
+        pDon = findViewById(R.id.penDon);
+        rDon = findViewById(R.id.recDon);
+        datosB = findViewById(R.id.datosBB);
+
         fAuth = FirebaseAuth.getInstance();
 
         FirebaseUser fuser = fAuth.getCurrentUser();
         if(!(fuser.isEmailVerified())){
             reenviar.setVisibility(View.VISIBLE);
+            mapaB.setVisibility(View.GONE);
+            aDon.setVisibility(View.GONE);
+            pDon.setVisibility(View.GONE);
+            rDon.setVisibility(View.GONE);
+            datosB.setVisibility(View.GONE);
             reenviar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -50,8 +62,18 @@ public class Beneficiario extends AppCompatActivity {
             });
         }else{
             reenviar.setVisibility(View.GONE);
+            mapaB.setVisibility(View.VISIBLE);
+            aDon.setVisibility(View.VISIBLE);
+            pDon.setVisibility(View.VISIBLE);
+            rDon.setVisibility(View.VISIBLE);
+            datosB.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    public void irMapaD(View view){
+        Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
+        startActivity(intent);
     }
 
     public void logout(View view){

@@ -28,6 +28,9 @@ public class admin extends AppCompatActivity {
     public void irImg(View view){
         startActivity(new Intent(getApplicationContext(),ImagenesU.class));
     }
+    public void irVerif(View view){
+        startActivity(new Intent(getApplicationContext(),Verificar.class));
+    }
 
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
