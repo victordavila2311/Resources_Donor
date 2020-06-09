@@ -76,6 +76,11 @@ public class Beneficiario extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void irAct(View view){
+        Intent intent = new Intent(getApplicationContext(), ActD.class);
+        startActivity(intent);
+    }
+
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(),MainActivity.class));

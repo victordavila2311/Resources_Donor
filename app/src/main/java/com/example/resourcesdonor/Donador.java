@@ -21,7 +21,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class Donador extends AppCompatActivity {
-    Button reenviar, mapaB, penB, donB, datosB;
+    Button reenviar, mapaB, penB, donB, datosB, misD;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
@@ -34,6 +34,7 @@ public class Donador extends AppCompatActivity {
         penB = findViewById(R.id.pendB);
         donB = findViewById(R.id.donacionDB);
         datosB = findViewById(R.id.datosDB);
+        misD = findViewById(R.id.button12);
 
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
@@ -45,6 +46,7 @@ public class Donador extends AppCompatActivity {
             penB.setVisibility(View.GONE);
             donB.setVisibility(View.GONE);
             datosB.setVisibility(View.GONE);
+            misD.setVisibility(View.GONE);
             reenviar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -68,6 +70,7 @@ public class Donador extends AppCompatActivity {
             penB.setVisibility(View.VISIBLE);
             donB.setVisibility(View.VISIBLE);
             datosB.setVisibility(View.VISIBLE);
+            misD.setVisibility(View.VISIBLE);
         }
         /*
         lats.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -91,6 +94,10 @@ public class Donador extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void irD(View view){
+        Intent intent = new Intent(getApplicationContext(),RealizarDonacion.class);
+        startActivity(intent);
+    }
 
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();

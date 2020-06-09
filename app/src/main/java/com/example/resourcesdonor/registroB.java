@@ -138,7 +138,8 @@ public class registroB extends AppCompatActivity {
                                     Log.d("TAG","onSuccess: usuario creado para"+userID);
                                 }
                             });
-                            Intent registradoB = new Intent(getApplicationContext(),Beneficiario.class);
+                            //Intent registradoB = new Intent(getApplicationContext(),Beneficiario.class);
+                            Intent registradoB = new Intent(getApplicationContext(), VerificadoFotos.class);
                             startActivity(registradoB);
                         }else{
                             Toast.makeText(registroB.this,"error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();

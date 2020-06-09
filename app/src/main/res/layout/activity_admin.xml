@@ -42,8 +42,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="128dp"
         android:onClick="irMarcador"
         android:text="@string/anadir_marcador"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -53,8 +55,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="163dp"
         android:onClick="irLista"
         android:text="@string/lista"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/marcadorB" />
 
@@ -64,8 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="161dp"
         android:onClick="irImg"
         android:text="@string/imagenes"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Lista" />
 
@@ -75,8 +81,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="129dp"
         android:onClick="irVerif"
         android:text="@string/verificar_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
