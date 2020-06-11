@@ -30,19 +30,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/verificar_email"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <Button
+    <TextView
         android:id="@+id/logoutB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
         android:layout_marginTop="500dp"
         android:onClick="logout"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="cursive"
         android:text="@string/log_out_txt"
+        android:textColor="#0000FF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
@@ -50,10 +57,12 @@
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/custom_button"
         android:onClick="irMapaD"
         android:text="@string/ver_centros_de_donacion_txt"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -61,9 +70,11 @@
         android:id="@+id/penDon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/donaciones_pendientes"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button9" />
 
@@ -71,10 +82,12 @@
         android:id="@+id/actuDon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:onClick="irAct"
         android:text="@string/actualizar_donaciones"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/penDon" />
 
@@ -82,9 +95,11 @@
         android:id="@+id/recDon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="109dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/donaciones_recibidas"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actuDon" />
 
@@ -92,9 +107,11 @@
         android:id="@+id/datosBB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/mis_datos"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recDon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,6 +58,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="500dp"
         android:onClick="volverPrincipal"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/volver_principal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -68,7 +70,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="500dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/login_txt"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/principal"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

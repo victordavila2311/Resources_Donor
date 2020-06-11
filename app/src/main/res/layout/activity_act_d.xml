@@ -13,6 +13,8 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="505dp"
         android:onClick="volver"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/volver_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="73dp"
         android:layout_marginTop="505dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
         android:text="@string/recibida"
         app:layout_constraintStart_toEndOf="@+id/button13"
         app:layout_constraintTop_toTopOf="parent" />

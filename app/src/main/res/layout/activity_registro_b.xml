@@ -26,10 +26,14 @@
         android:id="@+id/volver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="505dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/custom_button"
         android:onClick="volverPrincipal"
         android:text="@string/volver_text"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -142,10 +146,14 @@
         android:id="@+id/botonRB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="505dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/custom_button"
         android:text="@string/registrarse_txt"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

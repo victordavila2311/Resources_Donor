@@ -13,7 +13,7 @@
     <string name="password">Constraseña</string>
     <string name="direccion">Dirección</string>
     <string name="direccion_d">Dirección de la Donación</string>
-    <string name="login_txt">Login</string>
+    <string name="login_txt">LOG-IN</string>
     <string name="registrarse_txt">Registrarse</string>
     <string name="volver_principal">volver principal</string>
     <string name="log_out_txt">LOG-OUT</string>
