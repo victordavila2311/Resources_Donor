@@ -96,6 +96,7 @@ public class ActD extends AppCompatActivity {
     }
 
     public void Actualizar(View view){
+        fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         et.findViewById(R.id.editText3);
         CollectionReference user= fStore.collection("donaciones");
@@ -109,7 +110,7 @@ public class ActD extends AppCompatActivity {
                         if(d.getPara().equals(correo)){
                             String id = qds.getId();
                             DocumentReference dRef = FirebaseFirestore.getInstance()
-                                    .collection("Donaciones")
+                                    .collection("donaciones")
                                     .document(id);
                             Map<String,Object> map = new HashMap<>();
                             map.put("recibido","Si");

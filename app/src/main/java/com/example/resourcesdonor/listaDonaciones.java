@@ -38,6 +38,7 @@ public class listaDonaciones extends AppCompatActivity {
         tipo = getIntent().getStringExtra("tipo");
 
         userID = fAuth.getCurrentUser().getUid();
+        String resultado = "";
 
         user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -136,6 +137,7 @@ public class listaDonaciones extends AppCompatActivity {
             });
             volver = "Beneficiario";
         }
+
     }
 
 

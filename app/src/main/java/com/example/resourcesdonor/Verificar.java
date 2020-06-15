@@ -72,6 +72,7 @@ public class Verificar extends AppCompatActivity {
         verificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 CollectionReference user = fStore.collection("usuarios");
                 user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

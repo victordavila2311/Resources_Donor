@@ -72,21 +72,7 @@ public class Donador extends AppCompatActivity {
             datosB.setVisibility(View.VISIBLE);
             misD.setVisibility(View.VISIBLE);
         }
-        /*
-        lats.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String resultado="";
-                for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
-                    DireccionesClass dir = qds.toObject(DireccionesClass.class);
-                    double la = Double.parseDouble(dir.getLatitud());
-                    double lon = Double.parseDouble(dir.getLongitud());
-                    resultado += "latitud: "+la+"\nlongitud: "+lon+"\n";
-                }
-                prueba.setText(resultado);
-            }
-        });
-        */
+
     }
 
     public void irMapaD(View view){
