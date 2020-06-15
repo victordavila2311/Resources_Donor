@@ -42,6 +42,8 @@ public class Verificar extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         l = findViewById(R.id.datosU);
 
+
+
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,12 +90,12 @@ public class Verificar extends AppCompatActivity {
                                 dRef.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Toast.makeText(Verificar.this, "Actualizado", Toast.LENGTH_SHORT);
+                                        Toast.makeText(Verificar.this, "Actualizado", Toast.LENGTH_SHORT).show();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(Verificar.this, "Fallo por "+e, Toast.LENGTH_LONG);
+                                        Toast.makeText(Verificar.this, "Fallo por "+e, Toast.LENGTH_LONG).show();
                                     }
                                 });
 

@@ -48,4 +48,5 @@
     <string name="actualizar_txt">actualizar</string>
     <string name="recibida">recibida</string>
     <string name="correo_origen_donacion">Correo origen donacion</string>
+    <string name="descargar_txt">DESCARGAR</string>
 </resources>

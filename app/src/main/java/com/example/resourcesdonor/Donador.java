@@ -94,6 +94,18 @@ public class Donador extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void pendientes(View view) {
+        Intent intent = new Intent(getApplicationContext(), listaDonaciones.class);
+        intent.putExtra("tipo", "donadorPen");
+        startActivity(intent);
+    }
+
+    public void realizadas(View view){
+        Intent intent = new Intent(getApplicationContext(), listaDonaciones.class);
+        intent.putExtra("tipo", "donadorRealizado");
+        startActivity(intent);
+    }
+
     public void irD(View view){
         Intent intent = new Intent(getApplicationContext(),RealizarDonacion.class);
         startActivity(intent);

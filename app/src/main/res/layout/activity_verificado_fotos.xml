@@ -44,11 +44,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="505dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
         android:onClick="logout"
         android:text="@string/log_out_txt"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -133,10 +133,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="505dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
         android:text="@string/enviar"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toTopOf="parent" />
 

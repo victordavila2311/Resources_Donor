@@ -55,12 +55,13 @@
         android:id="@+id/principal"
         android:layout_width="95dp"
         android:layout_height="55dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="500dp"
-        android:onClick="volverPrincipal"
+        android:layout_marginTop="550dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
+        android:onClick="volverPrincipal"
         android:text="@string/volver_principal"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,12 +69,12 @@
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="556dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
         android:text="@string/login_txt"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toEndOf="@+id/principal"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

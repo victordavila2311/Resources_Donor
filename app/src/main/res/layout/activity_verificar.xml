@@ -10,7 +10,7 @@
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="505dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/custom_button"
         android:onClick="volver"
         android:text="@string/volver_text"

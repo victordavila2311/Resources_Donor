@@ -45,12 +45,6 @@ public class AnadirMarcador extends AppCompatActivity {
                 String lo = lon.getText().toString();
                 String desc = des.getText().toString();
                 DireccionesClass dir = new DireccionesClass(lat,lo,desc);
-                /*
-                Map<String,Object> dir = new HashMap<>();
-                dir.put("latitud", d.getLatitud());
-                dir.put("longitud", d.getLongitud());
-                dir.put("descripcion", d.getDescripcion());
-                 */
                 lats.add(dir).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {

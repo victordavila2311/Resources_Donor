@@ -76,6 +76,18 @@ public class Beneficiario extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void pendientes(View view) {
+        Intent intent = new Intent(getApplicationContext(), listaDonaciones.class);
+        intent.putExtra("tipo", "beneficiarioPen");
+        startActivity(intent);
+    }
+
+    public void recibidas(View view) {
+        Intent intent = new Intent(getApplicationContext(), listaDonaciones.class);
+        intent.putExtra("tipo", "beneficiarioRecibidas");
+        startActivity(intent);
+    }
+
     public void irAct(View view){
         Intent intent = new Intent(getApplicationContext(), ActD.class);
         startActivity(intent);

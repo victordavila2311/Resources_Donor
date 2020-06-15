@@ -2,11 +2,16 @@ package com.example.resourcesdonor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,16 +30,21 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class ImagenesU extends AppCompatActivity {
     EditText u;
     ImageView doc, ced, pCed;
-    Button s;
+    Button s, down;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     FirebaseStorage fStorage;
     StorageReference sReference;
     String url = "gs://resources-donor.appspot.com/";
+    OutputStream oStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,8 @@ public class ImagenesU extends AppCompatActivity {
         ced = findViewById(R.id.fotoCed);
         pCed = findViewById(R.id.fotoPCed);
         s = findViewById(R.id.searchB);
+        down = findViewById(R.id.downloadB);
+
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         fStorage = FirebaseStorage.getInstance();
@@ -50,16 +62,43 @@ public class ImagenesU extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imagenes_u);
 
+    }
 
-        /*
-        s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    public void Descargar(View view){
+        doc = findViewById(R.id.fotoDoc);
+        ced = findViewById(R.id.fotoCed);
+        pCed = findViewById(R.id.fotoPCed);
+        ImageView[] imgs = {doc, ced, pCed};
+        for(ImageView down : imgs){
+            if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
+                if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
+                    BitmapDrawable down1 = (BitmapDrawable) down.getDrawable();
+                    Bitmap b1 = down1.getBitmap();
+                    File filepath = Environment.getExternalStorageDirectory();
+                    File dir = new File(filepath.getAbsolutePath()+"/resources_donor/");
+                    dir.mkdir();
+                    File file = new File(dir, System.currentTimeMillis()+".jpg");
+                    try {
+                        oStream = new FileOutputStream(file);
 
+                    } catch (Exception e) {
+                        Toast.makeText(ImagenesU.this,"Fallo la descarga"+e, Toast.LENGTH_LONG).show();
+                    }
+                    b1.compress(Bitmap.CompressFormat.JPEG, 100, oStream);
+                    Toast.makeText(ImagenesU.this,"se completo la descarga", Toast.LENGTH_LONG).show();
+                    try {
+                        oStream.flush();
+                        oStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    ActivityCompat.requestPermissions(ImagenesU.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},44);
+                }
+            }else{
+                ActivityCompat.requestPermissions(ImagenesU.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},44);
             }
-        });
-
-         */
+        }
 
 
 

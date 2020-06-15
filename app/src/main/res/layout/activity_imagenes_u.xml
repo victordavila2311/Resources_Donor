@@ -9,8 +9,8 @@
     <ScrollView
         android:layout_width="360dp"
         android:layout_height="435dp"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correobusq">
 
@@ -60,12 +60,14 @@
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="505dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
         android:onClick="Volver"
         android:text="@string/volver_text"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/downloadB"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,6 +82,19 @@
         android:onClick="verImag"
         android:text="@string/buscar"
         app:layout_constraintStart_toEndOf="@+id/correobusq"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/downloadB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:background="@drawable/custom_button"
+        android:onClick="Descargar"
+        android:text="@string/descargar_txt"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button7"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

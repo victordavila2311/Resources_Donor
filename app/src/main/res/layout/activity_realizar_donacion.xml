@@ -24,23 +24,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="505dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
         android:onClick="volver"
         android:text="@string/volver_text"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/EnviarBot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="505dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
         android:text="@string/enviar"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/button10"
         app:layout_constraintTop_toTopOf="parent" />
 

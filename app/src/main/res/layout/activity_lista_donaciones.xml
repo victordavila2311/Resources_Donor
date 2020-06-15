@@ -4,24 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListaU">
+    tools:context=".listaDonaciones">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="550dp"
-        android:background="@drawable/custom_button"
-        android:onClick="volver"
+        android:onClick="Volver"
         android:text="@string/volver_text"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="503dp"
+        android:layout_width="405dp"
+        android:layout_height="520dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +28,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/lista_b"
+                android:id="@+id/listaTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
