@@ -14,6 +14,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta Activity es multiproposito segun desde donde venga ya que lo que hace es mostrar una lista, <br/>
+ * pero lo que se muestra en la lista depende de como se llegaron hasta el Activity
+ */
+
 public class listaDonaciones extends AppCompatActivity {
     String tipo;
     TextView tv;
@@ -32,14 +39,18 @@ public class listaDonaciones extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-
-
         tv = findViewById(R.id.listaTxt);
         tipo = getIntent().getStringExtra("tipo");
 
         userID = fAuth.getCurrentUser().getUid();
-        String resultado = "";
 
+        /**
+         * se genera una funcion que emula en el API de una base de datos no relacional como Firebase <br/>
+         * donde luego de obtener el JSON este se convierte en un objeto UsuariosClass <br/>
+         * lo que seria una busqueda en SQL de forma SELECT * FROM 'usuarios' WHERE ID = id <br/>
+         * y se consigue el correo que sera necesario para relacionar las siguientes funciones
+         * @see UsuariosClass
+         */
         user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -55,6 +66,12 @@ public class listaDonaciones extends AppCompatActivity {
 
         CollectionReference donaciones = fStore.collection("donaciones");
 
+        /**
+         * Esta funcion actua segun de donde venga el usuario y muestra distinta informacion en las listas <br/>
+         * se convierte el JSON en un objeto Donacionesclass <br/>
+         * para despues filtrar en una busqueda que emula SQL
+         * @see DonacionesClass
+         */
         if(tipo.equals("donadorPen")){
             donaciones.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
@@ -140,10 +157,12 @@ public class listaDonaciones extends AppCompatActivity {
 
     }
 
-
-
-
-
+    /**
+     * Esta funcion devuelve al usuario a la pagina de la que vienen (ya sea Benficiario o Donador)
+     * @param view -unused
+     * @see Donador
+     * @see Beneficiario
+     */
     public void Volver(View view){
         Intent intent;
         if(volver.equals("Donador")){

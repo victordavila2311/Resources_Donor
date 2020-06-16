@@ -28,7 +28,7 @@
     <string name="longitud_txt">Longitud</string>
     <string name="anadir">Añadir</string>
     <string name="lista">Lista</string>
-    <string name="comedorlargo_txt">Incluya aqui una foto del documento de propiedad del comedor</string>
+    <string name="comedorlargo_txt">Incluya aqui una foto del permiso del distrito para operar</string>
     <string name="subir">Subir</string>
     <string name="disclaimer">Si ya subio las fotos debe esperar a ser verficado</string>
     <string name="cedula_msg_txt">Incluya aqui una foto de su cedula</string>

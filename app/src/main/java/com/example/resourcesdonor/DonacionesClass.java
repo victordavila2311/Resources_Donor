@@ -1,4 +1,9 @@
 package com.example.resourcesdonor;
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta es la clase usada para convertir los JSON de donaciones de Firebase en objetos
+ */
 
 public class DonacionesClass {
     private String de;
@@ -6,10 +11,20 @@ public class DonacionesClass {
     private String para;
     private String recibido;
 
+    /**
+     * se neccesitan crear dos constructores dentro de este tipo de clases para convertir los JSON
+     */
     public DonacionesClass() {
 
     }
 
+    /**
+     * segundo constructor para el JSON
+     * @param de -correo de quien dona
+     * @param para -correo de quien recibe la donacion
+     * @param descripcion -descripcion donacion
+     * @param recibido -se recibio o no
+     */
     public DonacionesClass(String de, String para, String descripcion, String recibido) {
         this.de = de;
         this.para = para;

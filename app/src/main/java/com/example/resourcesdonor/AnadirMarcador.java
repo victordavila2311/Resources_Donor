@@ -17,8 +17,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta activity genera es la forma de los administradores para añadir marcadores al mapa
+ */
 
 public class AnadirMarcador extends AppCompatActivity {
     Button anadir;
@@ -36,6 +39,12 @@ public class AnadirMarcador extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         anadir = findViewById(R.id.anadirB);
+        /**
+         * funcion del boton anadir con la API FireStore en este caso no<br/>
+         * se usa un Hashmap sino un objeto DireccionesClass
+         * @see DireccionesClass
+         * @see android.view.View.OnClickListener
+         */
         anadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +69,11 @@ public class AnadirMarcador extends AppCompatActivity {
         });
     }
 
+    /**
+     * En esta funcion se devuelve al admin a la
+     * @param view -unused
+     * @see admin
+     */
     public void Volver(View view){
         Intent intent = new Intent(getApplicationContext(),admin.class);
         startActivity(intent);

@@ -26,6 +26,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta Activity muestra el mapa con la posicion de los centros de donacion y la del usuario <br/>
+ * por medio de la union de Firestore con el API de Google Maps
+ */
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -44,6 +51,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         client = LocationServices.getFusedLocationProviderClient(this);
+        /**
+         * se revisa si la aplicacion tiene los permisos necesarios
+         */
         if(ActivityCompat.checkSelfPermission(MapsActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             getCurrentLocation();
         }else{
@@ -53,6 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fStore = FirebaseFirestore.getInstance();
     }
 
+    /**
+     * Esta funcion revisa si el usuario ya tiene el permiso
+     * @param requestCode -codigo permiso
+     * @param permissions -permiso
+     * @param grantResults -valor del permiso
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == 44){
@@ -95,24 +111,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    /**
+     * En esta funcion se genera una forma de añadir marcadores al mapa <br/>
+     * en tiempo real sin tener que hacer el codigo uno por uno<br/>
+     * Esta seccion une la API de Firestore con la API de GoogleMaps <br/>
+     * la funcion consulta los documentos de la coleccion direcciones y devuelve <br/>
+     * un JSON que se transforma en un objeto DireccionesClass y esto se convierte <br/>
+     * en un marcador que usa la API de Google Maps
+     * @param googleMap -mapa
+     * @see DireccionesClass
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        /*
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-         */
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         CollectionReference lats = fStore.collection("direcciones");
         lats.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
                 for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
                     DireccionesClass dir = qds.toObject(DireccionesClass.class);
                     double la = Double.parseDouble(dir.getLatitud());
@@ -124,27 +141,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
-        /*
-        LatLng GLP = new LatLng(4.7746958572646605, -74.02984766971079);
-        mMap.addMarker(new MarkerOptions().position(GLP).title("Marker in GLP").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(GLP, 15));
-        LatLng santafe = new LatLng(4.76237549584809, -74.04636673701569);
-        mMap.addMarker(new MarkerOptions().position(santafe).title("Marker in Santafe").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        LatLng D1 = new LatLng(4.760818142294667, -74.03356052655084);
-        mMap.addMarker(new MarkerOptions().position(D1).title("Marker in D1").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        */
-
-
-
-        /*
-        LatLng Casa = new LatLng(4.756826538227585, -74.03236344585075);
-        mMap.addMarker(new MarkerOptions().position(Casa).title("Marker in GLP"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Casa, 15));
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.setMyLocationEnabled(true);
-        mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
-         */
-
     }
 }

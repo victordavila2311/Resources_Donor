@@ -25,6 +25,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta Activity es donde los benficiarios no verificados suben sus fotos requeridas
+ */
 public class VerificadoFotos extends AppCompatActivity {
     ImageView fD,fC,fPC,img;
     Button fDB,fCB,fPCB;
@@ -71,9 +76,11 @@ public class VerificadoFotos extends AppCompatActivity {
             }
         });
 
-
     }
 
+    /**
+     * Esta funcion abre la galeria para seleccionara la imagen del permiso
+     */
     private void setupimagen1() {
         img =findViewById(R.id.fotoDocumento);
         location = "doc";
@@ -81,6 +88,9 @@ public class VerificadoFotos extends AppCompatActivity {
         startActivityForResult(abrirGaleria, 1000);
     }
 
+    /**
+     * Esta funcion abre la galeria para seleccionara la imagen de la cedula
+     */
     private void setupimagen2() {
         img =findViewById(R.id.fotoCedula);
         location = "cedula";
@@ -88,6 +98,9 @@ public class VerificadoFotos extends AppCompatActivity {
         startActivityForResult(abrirGaleria, 1000);
     }
 
+    /**
+     * Esta funcion abre la galeria para seleccionara la imagen de la persona sosteniendo la cedula
+     */
     private void setupimagen3() {
         img =findViewById(R.id.fotoPCedula);
         location = "Pcedula";
@@ -95,6 +108,13 @@ public class VerificadoFotos extends AppCompatActivity {
         startActivityForResult(abrirGaleria, 1000);
     }
 
+    /**
+     * Esta funcion revis el permiso para revisar la galeria del<br/>
+     * dispositivo desde el que se suben las fotos
+     * @param requestCode -codigo permiso
+     * @param resultCode -valor del permiso
+     * @param data -imagen
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -107,6 +127,11 @@ public class VerificadoFotos extends AppCompatActivity {
         }
     }
 
+    /**
+     * Esta funcion realiza la conexion con Firebase Storage <br/>
+     * y sube la foto seleccionada en la url designada
+     * @param imageUri -Uri de la imagen
+     */
     private void subirFoto(Uri imageUri) {
         userID = fAuth.getCurrentUser().getUid();
         StorageReference fileRef = storageReference.child("usuarios/"+userID+"/"+location);
@@ -123,6 +148,12 @@ public class VerificadoFotos extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * se realiza el Log-out por medio de la API de Firebase y se vuelve a la pagina principal
+     * @param view -unused
+     * @see MainActivity
+     */
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(),MainActivity.class));

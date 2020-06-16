@@ -35,6 +35,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * desde esta Activity se revisan las imagenes subidas por los beneficiarios
+ */
+
 public class ImagenesU extends AppCompatActivity {
     EditText u;
     ImageView doc, ced, pCed;
@@ -43,6 +49,9 @@ public class ImagenesU extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseStorage fStorage;
     StorageReference sReference;
+    /**
+     * url del fire base storage donde se guardan las imagenes de los beneficiarios
+     */
     String url = "gs://resources-donor.appspot.com/";
     OutputStream oStream;
 
@@ -64,6 +73,12 @@ public class ImagenesU extends AppCompatActivity {
 
     }
 
+    /**
+     * Esta funcion permite a los administradores descargar las imagenes en el alacenamiento interno del celular <br/>
+     * en caso de no verlas correctamente desde la aplicacion<br/>
+     * si es la primera vez que se requiere esta funcion la aplicacion pedira los permisos correspondientes
+     * @param view -unused
+     */
     public void Descargar(View view){
         doc = findViewById(R.id.fotoDoc);
         ced = findViewById(R.id.fotoCed);
@@ -99,11 +114,14 @@ public class ImagenesU extends AppCompatActivity {
                 ActivityCompat.requestPermissions(ImagenesU.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},44);
             }
         }
-
-
-
     }
 
+    /**
+     * Esta funcion hace uso del API de Firebase Storage que es la seccion de Firebase encargada de archivos multimedia <br/>
+     * aunque primero se conecta con Firestore para reconocer el correo y el id del usuario buscado <br/>
+     * y despues transforma ese archivo en un Bitmap que puede ser visualizado en los distintos ImageView del Actiivity
+     * @param view -unused
+     */
     public void verImag(View view){
         u = findViewById(R.id.correobusq);
         doc = findViewById(R.id.fotoDoc);
@@ -189,8 +207,11 @@ public class ImagenesU extends AppCompatActivity {
         });
     }
 
-
-
+    /**
+     * Esta funcion devuelve al usuario a la barra de seleccion de funciones de administrador
+     * @param view-unused
+     * @see admin
+     */
     public void Volver(View view){
         Intent intent = new Intent(getApplicationContext(),admin.class);
         startActivity(intent);

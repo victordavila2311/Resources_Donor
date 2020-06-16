@@ -31,6 +31,11 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta Activity es el manejo logico del formulario de Registro de Donadores con Firebase
+ */
 
 public class registroD extends AppCompatActivity {
     EditText mNombre, mApellido, mCorreo, mContrasena, mDireccion, mCel;
@@ -56,28 +61,6 @@ public class registroD extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        /*
-        if(fAuth.getCurrentUser() != null){
-            userID = fAuth.getCurrentUser().getUid();
-            DocumentReference documentReference = fStore.collection("usuarios").document(userID);
-            documentReference.addSnapshotListener(registroD.this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                    String tipo = documentSnapshot.getString("Tipo");
-                    if(tipo=="Beneficiario"){
-                        Intent registradoB = new Intent(getApplicationContext(),Beneficiario.class);
-                        startActivity(registradoB);
-                    }else if(tipo=="Donador"){
-                        Intent registradoD = new Intent(getApplicationContext(),Donador.class);
-                        startActivity(registradoD);
-                    }
-                }
-            });
-        }
-
-         */
-
-
 
         mBotonRD.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +83,11 @@ public class registroD extends AppCompatActivity {
                 if(password.length()<8){
                     mContrasena.setError("la contraseña debe tener minimo 8 caracteres");
                 }
+                /**
+                 * En esta seccion se usa Firebase Authentication para realizar el nuevo usuario <br/>
+                 * luego se conecta el id con FireStore y se agrega un nuevo documento <br/>
+                 * a la coleccion usuarios en forma de HashMap
+                 */
                 fAuth.createUserWithEmailAndPassword(correo,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -116,7 +104,6 @@ public class registroD extends AppCompatActivity {
                                     Log.d("tag","Fallo" + e.getMessage());
                                 }
                             });
-
 
                             Toast.makeText(registroD.this,"usuario creado", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
@@ -149,11 +136,21 @@ public class registroD extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Esta funcion devuelve al usuario a la pagina inicial
+     * @param view -unused
+     * @see MainActivity
+     */
     public void volverPrincipal(View view){
         Intent volver_principal = new Intent(this,MainActivity.class);
         startActivity(volver_principal);
     }
+
+    /**
+     * Esta funcion envia al usuario al Activity de LOGIN
+     * @param view -unused
+     * @see Login
+     */
     public void irLogin(View view){
         Intent ir_Login = new Intent(this,Login.class);
         startActivity(ir_Login);

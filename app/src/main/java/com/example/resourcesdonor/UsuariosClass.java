@@ -1,12 +1,32 @@
 package com.example.resourcesdonor;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta es la clase usada para convertir los JSON de usuarios de Firebase en objetos
+ */
 public class UsuariosClass {
     private String Nombre, Apellido, Correo, Direccion, DireccionD, Tipo, Verificado, Celular;
     private int CantDonaciones;
 
+    /**
+     * se neccesitan crear dos constructores dentro de este tipo de clases para convertir los JSON
+     */
     public UsuariosClass() {
     }
 
+    /**
+     * segundo constructor de los JSON
+     * @param nombre -nombre usuario
+     * @param apellido -apellido usuario
+     * @param correo - correo usuario
+     * @param direccion -direccion usuario
+     * @param direccionD -direccion para las donaciones
+     * @param tipo -tipo de usuario
+     * @param verificado -el usuario esta verificado string "Si" || "No"
+     * @param celular -celular usuario
+     * @param cantDonaciones -cantidad de donaciones int
+     */
     public UsuariosClass(String nombre, String apellido, String correo, String direccion, String direccionD, String tipo, String verificado, String celular, int cantDonaciones) {
         this.Nombre = nombre;
         this.Apellido = apellido;

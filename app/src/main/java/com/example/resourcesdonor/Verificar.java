@@ -23,6 +23,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ *
+ */
+
 public class Verificar extends AppCompatActivity {
     EditText et;
     Button buscar, verificar;
@@ -43,7 +49,12 @@ public class Verificar extends AppCompatActivity {
         l = findViewById(R.id.datosU);
 
 
-
+        /**
+         * Onclicklistener que ejecuta una busqueda adaptada a bases de datos no relacionales <br/>
+         * convirtiendo el JSON en un objeto UsuariosClass
+         * @see UsuariosClass
+         * @see android.view.View.OnClickListener
+         */
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,10 +80,19 @@ public class Verificar extends AppCompatActivity {
             }
         });
 
+        /**
+         * Boton que ejecuta la actualizacion de la base de datos Firebase <br/>
+         * realizando un algoritmo para simula lo que seria en SQL un <br/>
+         * SELECT FROM * WHERE de = 'correo' <br/>
+         * con el dRef.update(map) se pasa el hashmap y se revisan y actualizan <br/>
+         * para revisar los requisitos se convierte el JSON en un objeto UsuariosClass <br/>
+         * como un UPDATE 'usuarios' SET verificado = Si <br/>
+         * solo los campos nombrados en el hashmap
+         * @see UsuariosClass
+         */
         verificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 CollectionReference user = fStore.collection("usuarios");
                 user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -102,18 +122,17 @@ public class Verificar extends AppCompatActivity {
 
                             }
                         }
-
-
                     }
                 });
-
             }
         });
-
-
-
     }
 
+    /**
+     * Esta funcion devuelve al usuario al menu de opciones de administrador
+     * @param view -unused
+     * @see admin
+     */
     public void volver(View view){
         Intent vol = new Intent(this,admin.class);
         startActivity(vol);

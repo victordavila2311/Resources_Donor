@@ -23,6 +23,11 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import javax.annotation.Nullable;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta Activity realiza el login de la aplicacion por medio del uso de la API de FIrebase Authentication
+ */
 public class Login extends AppCompatActivity {
     EditText mCorreo, mContrasena;
     Button mBotonLogin;
@@ -41,6 +46,10 @@ public class Login extends AppCompatActivity {
         mBotonLogin = findViewById(R.id.Login);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        /**
+         * Esta funcion del boton LOGIN revisa los criterios y la base de datos para saber si el usuario existe
+         * @see android.view.View.OnClickListener
+         */
         mBotonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +65,18 @@ public class Login extends AppCompatActivity {
                 if(password.length()<8){
                     mContrasena.setError("la contraseña debe tener minimo 8 caracteres");
                 }
+                /**
+                 * Esta seccion revisa en Firestore el tipo de usuario y le muestra el Activity correspondiente
+                 * @see VerificadoFotos
+                 * @see Beneficiario
+                 * @see Donador
+                 * @see admin
+                 */
                 fAuth.signInWithEmailAndPassword(correo,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(getApplicationContext(),"logged", Toast.LENGTH_SHORT).show();
-                            // aqui falta empezar la new activity que seria el menu de opciones del beneficiario
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("usuarios").document(userID);
                             documentReference.addSnapshotListener(Login.this, new EventListener<DocumentSnapshot>() {
@@ -97,10 +112,13 @@ public class Login extends AppCompatActivity {
 
     }
 
+    /**
+     * Esta Activity devuleve al usuario a la pagina principal
+     * @param view -unused
+     * @see MainActivity
+     */
     public void volverPrincipal(View view){
         Intent volver_principal = new Intent(this,MainActivity.class);
         startActivity(volver_principal);
     }
-
-
 }

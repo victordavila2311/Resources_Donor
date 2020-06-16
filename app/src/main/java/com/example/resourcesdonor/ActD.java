@@ -26,6 +26,8 @@ import java.util.Map;
 /**
  * @author victor manuel davila 1001218585
  * @version 1.0
+ * Este es el Activity usado para actualizar las donaciones recibidas
+ * por medio de Firebase Firestore
  */
 
 public class ActD extends AppCompatActivity {
@@ -49,13 +51,16 @@ public class ActD extends AppCompatActivity {
 
         CollectionReference us = fStore.collection("usuarios");
         userID = fAuth.getCurrentUser().getUid();
-
+        /**
+         * Se identifica el correo del usuario a travez del ID del usuario actua.<br/>
+         * se convierte el JSON en un objeto UsuarioClass
+         * @see UsuariosClass
+         */
         us.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
                     UsuariosClass u = qds.toObject(UsuariosClass.class);
-                    String ver = u.getVerificado();
                     String id=qds.getId();
                     if(id.equals(userID)){
                         correo = u.getCorreo();
@@ -63,7 +68,12 @@ public class ActD extends AppCompatActivity {
                 }
             }
         });
-
+        /**
+         * Onclicklistener que ejecuta una busqueda adaptada a bases de datos no relacionales <br/>
+         * convirtiendo el JSON en un objeto DonacionesClass
+         * @see DonacionesClass
+         * @see android.view.View.OnClickListener
+         */
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,21 +90,26 @@ public class ActD extends AppCompatActivity {
                                     resultado +="De: "+ d.getDe() +"\ndescripcion: "+d.getDescripcion()+
                                             "\n--------------------------------------------------\n";
                                 }
-
                             }
                         }
                         tv.setText(resultado);
-
                     }
                 });
-
             }
         });
-
-
-
     }
 
+    /**
+     * Boton que ejecuta la actualizacion de la base de datos Firebase <br/>
+     * realizando un algoritmo para simula lo que seria en SQL un <br/>
+     * SELECT FROM * WHERE de = 'correoorigen' AND para = 'correodestino' <br/>
+     * con el dRef.update(map) se pasa el hashmap y se revisan y actualizan <br/>
+     * para revisar los requisitos se convierte el JSON en un objeto DonacionesClass <br/>
+     * como un UPDATE 'donaciones' SET recibido = Si <br/>
+     * solo los campos nombrados en el hashmap
+     * @see DonacionesClass
+     * @param view -unused
+     */
     public void Actualizar(View view){
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -132,6 +147,11 @@ public class ActD extends AppCompatActivity {
         });
     }
 
+    /**
+     * boton para volver al Activity anterior
+     * @param view -unused
+     * @see Beneficiario
+     */
     public void volver(View view){
         Intent vol = new Intent(this, Beneficiario.class);
         startActivity(vol);

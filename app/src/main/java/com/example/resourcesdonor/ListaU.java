@@ -17,6 +17,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * @author victor manuel davila 1001218585
+ * @version 1.0
+ * Esta Activity le muestra a los administradores una lista con los usuarios no verificados
+ */
 public class ListaU extends AppCompatActivity {
     TextView l;
     FirebaseAuth fAuth;
@@ -30,6 +35,11 @@ public class ListaU extends AppCompatActivity {
         fStore =  FirebaseFirestore.getInstance();
         l = findViewById(R.id.lista_b);
         CollectionReference user = fStore.collection("usuarios");
+        /**
+         * En esta seccion se realiza una busqueda dentro de los decumentos de la Firestore <br/>
+         * luego los resultados de esta busqueda se convierten los JSON a objetos UsuariosClass
+         * @see UsuariosClass
+         */
         user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -42,14 +52,17 @@ public class ListaU extends AppCompatActivity {
                         resultado +="nombre: "+ u.getNombre() +"\napellido: "+u.getApellido()+"\ncorreo: "+u.getCorreo()+
                                 "\ncelular: "+u.getCelular()+"\nid: "+id+"\n--------------------------------------------------\n";
                     }
-
                 }
                 l.setText(resultado);
-
             }
         });
     }
 
+    /**
+     * Esta funcion devuelve al usuario al menu de opciones de administrador
+     * @param view -unused
+     * @see admin
+     */
     public void volver(View view){
         Intent vol = new Intent(this,admin.class);
         startActivity(vol);
