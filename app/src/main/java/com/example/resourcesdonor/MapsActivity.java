@@ -27,10 +27,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 /**
- * @author victor manuel davila 1001218585
- * @version 1.0
  * Esta Activity muestra el mapa con la posicion de los centros de donacion y la del usuario <br/>
  * por medio de la union de Firestore con el API de Google Maps
+ * @author victor manuel davila 1001218585
+ * @version 1.0
  */
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -51,9 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         client = LocationServices.getFusedLocationProviderClient(this);
-        /**
-         * se revisa si la aplicacion tiene los permisos necesarios
-         */
+
         if(ActivityCompat.checkSelfPermission(MapsActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             getCurrentLocation();
         }else{
@@ -109,9 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * we just add a marker near Sydney, Australia.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    /**
+     * installed Google Play services and returned to the app.<br/><br/>
      * En esta funcion se genera una forma de añadir marcadores al mapa <br/>
      * en tiempo real sin tener que hacer el codigo uno por uno<br/>
      * Esta seccion une la API de Firestore con la API de GoogleMaps <br/>

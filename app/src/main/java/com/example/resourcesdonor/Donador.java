@@ -21,10 +21,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 /**
- * @author victor manuel davila 1001218585
- * @version 1.0
  * este activity le muestra al beneficiario ya verificado por los administradores las distintas <br/>
  * opciones disponibles a su disposicion
+ * @author victor manuel davila 1001218585
+ * @version 1.0
  */
 
 public class Donador extends AppCompatActivity {
@@ -32,6 +32,11 @@ public class Donador extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
+    /**
+     * se revisa si el usuario ya verifico su correo por medio del Firebase Authentication API <br/>
+     * y se configuran las opciones visibles
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +52,7 @@ public class Donador extends AppCompatActivity {
         fStore= FirebaseFirestore.getInstance();
 
         FirebaseUser fuser = fAuth.getCurrentUser();
-        /**
-         * se revisa si el usuario ya verifico su correo por medio del Firebase Authentication API <br/>
-         * y se configuran las opciones visibles
-         */
+
         if(!(fuser.isEmailVerified())){
             reenviar.setVisibility(View.VISIBLE);
             mapaB.setVisibility(View.GONE);
@@ -125,6 +127,17 @@ public class Donador extends AppCompatActivity {
      */
     public void irD(View view){
         Intent intent = new Intent(getApplicationContext(),RealizarDonacion.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Esta funcion envia al usuario a un Activity donde se muestran los datos del usuario
+     * @param view -unused
+     * @see MisDatos
+     */
+    public void irDatos(View view) {
+        Intent intent = new Intent(getApplicationContext(), MisDatos.class);
+        intent.putExtra("tipo", "Donador");
         startActivity(intent);
     }
 

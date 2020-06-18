@@ -10,7 +10,7 @@
     <string name="nombre">Nombre</string>
     <string name="apellido">Apellido</string>
     <string name="correo">Correo</string>
-    <string name="password">Constraseña</string>
+    <string name="password">Contraseña</string>
     <string name="direccion">Dirección</string>
     <string name="direccion_d">Dirección de la Donación</string>
     <string name="login_txt">LOG-IN</string>
@@ -40,7 +40,7 @@
     <string name="donaciones_pendientes">donaciones pendientes</string>
     <string name="actualizar_donaciones">actualizar donaciones</string>
     <string name="donaciones_recibidas">Donaciones Recibidas</string>
-    <string name="mis_datos">mis datos</string>
+    <string name="mis_datos">Mis Datos</string>
     <string name="realizar_donacion">realizar donacion</string>
     <string name="mis_donaciones">mis donaciones</string>
     <string name="corrreo_de_quien_recibe">Correo de quien recibe</string>

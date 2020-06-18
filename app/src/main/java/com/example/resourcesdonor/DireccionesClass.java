@@ -1,9 +1,9 @@
 package com.example.resourcesdonor;
 
 /**
+ * Esta es la clase usada para convertir los JSON de direcciones de Firebase en objetos
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Esta es la clase usada para convertir los JSON de direcciones de Firebase en objetos
  */
 
 public class DireccionesClass {

@@ -31,9 +31,9 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
+ * Esta Activity es el manejo logico del formulario de Registro de Beneficiarios con Firebase
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Esta Activity es el manejo logico del formulario de Registro de Beneficiarios con Firebase
  */
 
 public class registroB extends AppCompatActivity {
@@ -43,8 +43,12 @@ public class registroB extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
 
-
-
+    /**
+     * En esta seccion se usa Firebase Authentication para realizar el nuevo usuario <br/>
+     * luego se conecta el id con FireStore y se agrega un nuevo documento <br/>
+     * a la coleccion usuarios en forma de HashMap
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,11 +87,7 @@ public class registroB extends AppCompatActivity {
                 if(password.length()<8){
                     mContrasena.setError("la contraseña debe tener minimo 8 caracteres");
                 }
-                /**
-                 * En esta seccion se usa Firebase Authentication para realizar el nuevo usuario <br/>
-                 * luego se conecta el id con FireStore y se agrega un nuevo documento <br/>
-                 * a la coleccion usuarios en forma de HashMap
-                 */
+
                 fAuth.createUserWithEmailAndPassword(correo,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

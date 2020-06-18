@@ -14,9 +14,9 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 /**
+ * Este es un Splash screen que se muestra al abrir la aplicación
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Este es un Splash screen que se muestra al abrir la aplicación
  */
 
 public class Inicio extends AppCompatActivity {
@@ -25,6 +25,12 @@ public class Inicio extends AppCompatActivity {
     private ObjectAnimator animatorAlpha;
     private AnimatorSet animatorSet ;
 
+    /**
+     * Este es una forma de usar hilos para correr el Activity que en realidad es el inicio<br/>
+     * inicia el activity principal luego de una pequeña animacion
+     * @see MainActivity
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         logo = findViewById(R.id.imageView);
@@ -35,11 +41,7 @@ public class Inicio extends AppCompatActivity {
         animatorSet = new AnimatorSet();
         animatorSet.play(animatorAlpha);
         animatorSet.start();
-        /**
-         * Este es una forma de usar hilos para correr el Activity que en realidad es el inicio<br/>
-         * inicia el activity principal luego de una pequeña animacion
-         * @see MainActivity
-         */
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

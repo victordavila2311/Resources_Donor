@@ -24,20 +24,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author victor manuel davila 1001218585
- * @version 1.0
  * Este es el Activity usado para actualizar las donaciones recibidas
  * por medio de Firebase Firestore
+ * @author victor manuel davila 1001218585
+ * @version 1.0
  */
 
 public class ActD extends AppCompatActivity {
+
     EditText et;
     TextView tv;
     Button b, recibido;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String userID, correo;
-
+    /**
+     * Se identifica el correo del usuario a travez del ID del usuario actua.<br/>
+     * se convierte el JSON en un objeto UsuarioClass<br/>
+     * Onclicklistener que ejecuta una busqueda adaptada a bases de datos no relacionales <br/>
+     * convirtiendo el JSON en un objeto DonacionesClass
+     * @see DonacionesClass
+     * @see android.view.View.OnClickListener
+     * @see UsuariosClass
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,11 +61,7 @@ public class ActD extends AppCompatActivity {
 
         CollectionReference us = fStore.collection("usuarios");
         userID = fAuth.getCurrentUser().getUid();
-        /**
-         * Se identifica el correo del usuario a travez del ID del usuario actua.<br/>
-         * se convierte el JSON en un objeto UsuarioClass
-         * @see UsuariosClass
-         */
+
         us.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -68,12 +74,7 @@ public class ActD extends AppCompatActivity {
                 }
             }
         });
-        /**
-         * Onclicklistener que ejecuta una busqueda adaptada a bases de datos no relacionales <br/>
-         * convirtiendo el JSON en un objeto DonacionesClass
-         * @see DonacionesClass
-         * @see android.view.View.OnClickListener
-         */
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

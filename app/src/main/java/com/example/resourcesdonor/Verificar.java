@@ -24,9 +24,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * En esta Activity se realiza la verificacio de los beneficirarios
  * @author victor manuel davila 1001218585
  * @version 1.0
- *
  */
 
 public class Verificar extends AppCompatActivity {
@@ -37,6 +37,21 @@ public class Verificar extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
+    /**
+     * Onclicklistener que ejecuta una busqueda adaptada a bases de datos no relacionales <br/>
+     * convirtiendo el JSON en un objeto UsuariosClass<br/>
+     * Boton que ejecuta la actualizacion de la base de datos Firebase <br/>
+     * realizando un algoritmo para simula lo que seria en SQL un <br/>
+     * SELECT FROM * WHERE de = 'correo' <br/>
+     * con el dRef.update(map) se pasa el hashmap y se revisan y actualizan <br/>
+     * para revisar los requisitos se convierte el JSON en un objeto UsuariosClass <br/>
+     * como un UPDATE 'usuarios' SET verificado = Si <br/>
+     * solo los campos nombrados en el hashmap
+     * @see UsuariosClass
+     * @see UsuariosClass
+     * @see android.view.View.OnClickListener
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +63,6 @@ public class Verificar extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         l = findViewById(R.id.datosU);
 
-
-        /**
-         * Onclicklistener que ejecuta una busqueda adaptada a bases de datos no relacionales <br/>
-         * convirtiendo el JSON en un objeto UsuariosClass
-         * @see UsuariosClass
-         * @see android.view.View.OnClickListener
-         */
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,16 +88,7 @@ public class Verificar extends AppCompatActivity {
             }
         });
 
-        /**
-         * Boton que ejecuta la actualizacion de la base de datos Firebase <br/>
-         * realizando un algoritmo para simula lo que seria en SQL un <br/>
-         * SELECT FROM * WHERE de = 'correo' <br/>
-         * con el dRef.update(map) se pasa el hashmap y se revisan y actualizan <br/>
-         * para revisar los requisitos se convierte el JSON en un objeto UsuariosClass <br/>
-         * como un UPDATE 'usuarios' SET verificado = Si <br/>
-         * solo los campos nombrados en el hashmap
-         * @see UsuariosClass
-         */
+
         verificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -24,9 +24,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import javax.annotation.Nullable;
 
 /**
+ * Esta Activity realiza el login de la aplicacion por medio del uso de la API de FIrebase Authentication
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Esta Activity realiza el login de la aplicacion por medio del uso de la API de FIrebase Authentication
  */
 public class Login extends AppCompatActivity {
     EditText mCorreo, mContrasena;
@@ -35,7 +35,16 @@ public class Login extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
 
-
+    /**
+     * Esta funcion del boton LOGIN revisa los criterios y la base de datos para saber si el usuario existe <br/>
+     * Esta seccion revisa en Firestore el tipo de usuario y le muestra el Activity correspondiente
+     * @see VerificadoFotos
+     * @see Beneficiario
+     * @see Donador
+     * @see admin
+     * @see android.view.View.OnClickListener
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +55,7 @@ public class Login extends AppCompatActivity {
         mBotonLogin = findViewById(R.id.Login);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        /**
-         * Esta funcion del boton LOGIN revisa los criterios y la base de datos para saber si el usuario existe
-         * @see android.view.View.OnClickListener
-         */
+
         mBotonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,13 +71,7 @@ public class Login extends AppCompatActivity {
                 if(password.length()<8){
                     mContrasena.setError("la contraseña debe tener minimo 8 caracteres");
                 }
-                /**
-                 * Esta seccion revisa en Firestore el tipo de usuario y le muestra el Activity correspondiente
-                 * @see VerificadoFotos
-                 * @see Beneficiario
-                 * @see Donador
-                 * @see admin
-                 */
+
                 fAuth.signInWithEmailAndPassword(correo,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

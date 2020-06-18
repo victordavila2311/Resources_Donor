@@ -36,9 +36,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
+ * desde esta Activity se revisan las imagenes subidas por los beneficiarios
  * @author victor manuel davila 1001218585
  * @version 1.0
- * desde esta Activity se revisan las imagenes subidas por los beneficiarios
  */
 
 public class ImagenesU extends AppCompatActivity {
@@ -209,7 +209,7 @@ public class ImagenesU extends AppCompatActivity {
 
     /**
      * Esta funcion devuelve al usuario a la barra de seleccion de funciones de administrador
-     * @param view-unused
+     * @param view -unused
      * @see admin
      */
     public void Volver(View view){

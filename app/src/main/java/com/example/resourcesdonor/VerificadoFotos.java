@@ -26,9 +26,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 /**
+ * Esta Activity es donde los benficiarios no verificados suben sus fotos requeridas
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Esta Activity es donde los benficiarios no verificados suben sus fotos requeridas
  */
 public class VerificadoFotos extends AppCompatActivity {
     ImageView fD,fC,fPC,img;

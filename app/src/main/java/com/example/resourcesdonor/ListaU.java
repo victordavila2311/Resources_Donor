@@ -18,15 +18,21 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 /**
+ * Esta Activity le muestra a los administradores una lista con los usuarios no verificados
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Esta Activity le muestra a los administradores una lista con los usuarios no verificados
  */
 public class ListaU extends AppCompatActivity {
     TextView l;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
+    /**
+     * En esta seccion se realiza una busqueda dentro de los decumentos de la Firestore <br/>
+     * luego los resultados de esta busqueda se convierten los JSON a objetos UsuariosClass
+     * @see UsuariosClass
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +41,7 @@ public class ListaU extends AppCompatActivity {
         fStore =  FirebaseFirestore.getInstance();
         l = findViewById(R.id.lista_b);
         CollectionReference user = fStore.collection("usuarios");
-        /**
-         * En esta seccion se realiza una busqueda dentro de los decumentos de la Firestore <br/>
-         * luego los resultados de esta busqueda se convierten los JSON a objetos UsuariosClass
-         * @see UsuariosClass
-         */
+
         user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".listaDonaciones"></activity>
+        <activity android:name=".MisDatos"></activity>
+        <activity android:name=".listaDonaciones" />
         <activity android:name=".ActD" />
         <activity android:name=".RealizarDonacion" />
         <activity android:name=".Inicio">

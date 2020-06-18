@@ -8,9 +8,9 @@ import android.os.Handler;
 import android.view.View;
 
 /**
+ * Esta es la Activity inicial de la aplicación
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Esta es la Activity inicial de la aplicación
  */
 
 public class MainActivity extends AppCompatActivity {

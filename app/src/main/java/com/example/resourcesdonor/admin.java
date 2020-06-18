@@ -9,9 +9,9 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
+ * En este Activity se muestran las opciones que tiene el administrador para desarrollar cambios
  * @author victor manuel davila 1001218585
  * @version 1.0
- *En este Activity se muestran las opciones que tiene el administrador para desarrollar cambios
  */
 
 public class admin extends AppCompatActivity {

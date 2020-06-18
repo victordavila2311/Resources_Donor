@@ -20,9 +20,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 /**
+ * Esta Activity es para los Donadores al momento de realizar una donacion
  * @author victor manuel davila 1001218585
  * @version 1.0
- * Esta Activity es para los Donadores al momento de realizar una donacion
  */
 
 public class RealizarDonacion extends AppCompatActivity {
@@ -36,6 +36,18 @@ public class RealizarDonacion extends AppCompatActivity {
 
     CollectionReference user = fStore.collection("usuarios");
 
+    /**
+     * se genera una funcion que emula en el API de una base de datos no relacional como Firebase <br/>
+     * donde luego de obtener el JSON este se convierte en un objeto UsuariosClass <br/>
+     * lo que seria una busqueda en SQL de forma SELECT * FROM 'usuarios' WHERE ID = id <br/>
+     * y se consigue el correo que sera necesario para relacionar las siguientes funciones <br/>
+     * funcion del boton b con la API FireStore en este para añadir una nueva donacion a Firestore<br/>
+     * caso no se usa un Hashmap sino un objeto DonacionesClass
+     * @see DonacionesClass
+     * @see android.view.View.OnClickListener
+     * @see UsuariosClass
+     * @param savedInstanceState -unused
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +58,6 @@ public class RealizarDonacion extends AppCompatActivity {
         b = findViewById(R.id.EnviarBot);
 
         userID = fAuth.getCurrentUser().getUid();
-
-        /**
-         * se genera una funcion que emula en el API de una base de datos no relacional como Firebase <br/>
-         * donde luego de obtener el JSON este se convierte en un objeto UsuariosClass <br/>
-         * lo que seria una busqueda en SQL de forma SELECT * FROM 'usuarios' WHERE ID = id <br/>
-         * y se consigue el correo que sera necesario para relacionar las siguientes funciones
-         * @see UsuariosClass
-         */
 
         user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -68,12 +72,7 @@ public class RealizarDonacion extends AppCompatActivity {
             }
         });
 
-        /**
-         * funcion del boton b con la API FireStore en este para añadir una nueva donacion a Firestore<br/>
-         * caso no se usa un Hashmap sino un objeto DonacionesClass
-         * @see DonacionesClass
-         * @see android.view.View.OnClickListener
-         */
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
