@@ -87,7 +87,7 @@ public class ActD extends AppCompatActivity {
                             DonacionesClass d = qds.toObject(DonacionesClass.class);
                             String c = et.getText().toString();
                             if(d.getDe().equals(c)){
-                                if(d.getPara().equals(correo)){
+                                if(d.getPara().equals(correo) && d.getRecibido().equals("No")){
                                     resultado +="De: "+ d.getDe() +"\ndescripcion: "+d.getDescripcion()+
                                             "\n--------------------------------------------------\n";
                                 }
@@ -123,7 +123,7 @@ public class ActD extends AppCompatActivity {
                     DonacionesClass d = qds.toObject(DonacionesClass.class);
                     String c = et.getText().toString();
                     if(d.getDe().equals(c)){
-                        if(d.getPara().equals(correo)){
+                        if(d.getPara().equals(correo) && d.getRecibido().equals("No")){
                             String id = qds.getId();
                             DocumentReference dRef = FirebaseFirestore.getInstance()
                                     .collection("donaciones")

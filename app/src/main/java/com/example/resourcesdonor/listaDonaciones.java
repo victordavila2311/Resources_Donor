@@ -80,15 +80,12 @@ public class listaDonaciones extends AppCompatActivity {
                     for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
                         DonacionesClass u = qds.toObject(DonacionesClass.class);
                         String de = u.getDe();
-                        String ver = u.getRecibido();
-                        System.out.println(de);
-                        if(de.equals(correo)){
-                            if(ver.equals("No")){
-                                resultado +="Para: "+ u.getPara() +"\nDescripción: "+u.getDescripcion() +
+                        if(u.getDe().equals(correo) && u.getRecibido().equals("No")){
+                            resultado +="Para: "+ u.getPara() +"\nDescripción: "+u.getDescripcion() +
                                         "\n--------------------------------------------------\n";
-                            }
                         }
                     }
+                    System.out.println(resultado);
                     tv.setText(resultado);
                 }
             });
@@ -101,15 +98,14 @@ public class listaDonaciones extends AppCompatActivity {
                     for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
                         DonacionesClass u = qds.toObject(DonacionesClass.class);
                         String de = u.getDe();
-                        String ver = u.getRecibido();
-                        if(de.equals(correo)){
-                            if(ver.equals("Si")){
-                                resultado +="Para: "+ u.getPara() +"\nDescripción: "+u.getDescripcion() +
+                        if(de.equals(correo) && u.getRecibido().equals("Si")){
+                            resultado +="Para: "+ u.getPara() +"\nDescripción: "+u.getDescripcion() +
                                         "\n--------------------------------------------------\n";
-                            }
+
                         }
                     }
                     tv.setText(resultado);
+                    System.out.println(resultado);
                 }
             });
             volver = "Donador";
@@ -121,15 +117,15 @@ public class listaDonaciones extends AppCompatActivity {
                     for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
                         DonacionesClass u = qds.toObject(DonacionesClass.class);
                         String para = u.getPara();
-                        String ver = u.getRecibido();
-                        if(para.equals(correo)){
-                            if(ver.equals("No")){
-                                resultado +="De: "+ u.getDe() +"\nDescripción: "+u.getDescripcion() +
+                        if(para.equals(correo) && u.getRecibido().equals("No")){
+
+                            resultado +="De: "+ u.getDe() +"\nDescripción: "+u.getDescripcion() +
                                         "\n--------------------------------------------------\n";
-                            }
+
                         }
                     }
                     tv.setText(resultado);
+                    System.out.println(resultado);
                 }
             });
             volver = "Beneficiario";
@@ -141,15 +137,13 @@ public class listaDonaciones extends AppCompatActivity {
                     for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
                         DonacionesClass u = qds.toObject(DonacionesClass.class);
                         String para = u.getPara();
-                        String ver = u.getRecibido();
-                        if(para.equals(correo)){
-                            if(ver.equals("Si")){
-                                resultado +="De: "+ u.getDe() +"\nDescripción: "+u.getDescripcion() +
+                        if(para.equals(correo) && u.getRecibido().equals("Si")){
+                            resultado +="De: "+ u.getDe() +"\nDescripción: "+u.getDescripcion() +
                                         "\n--------------------------------------------------\n";
-                            }
                         }
                     }
                     tv.setText(resultado);
+                    System.out.println(resultado);
                 }
             });
             volver = "Beneficiario";
