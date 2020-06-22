@@ -52,7 +52,8 @@ public class ListaU extends AppCompatActivity {
                     String id=qds.getId();
                     if(ver.equals("No")){
                         resultado +="nombre: "+ u.getNombre() +"\napellido: "+u.getApellido()+"\ncorreo: "+u.getCorreo()+
-                                "\ncelular: "+u.getCelular()+"\nid: "+id+"\n--------------------------------------------------\n";
+                                "\ncelular: "+u.getCelular()+"\nid: "+id+"\nDireccion Donacion: "+u.getDireccionD()+
+                                "\n---------------------------------------------------------------------------\n";
                     }
                 }
                 l.setText(resultado);

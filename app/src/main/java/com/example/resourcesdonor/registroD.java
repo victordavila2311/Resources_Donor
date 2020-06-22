@@ -114,7 +114,7 @@ public class registroD extends AppCompatActivity {
                             user.put("Correo", correo);
                             user.put("Direccion", direccion);
                             user.put("DireccionD", null);
-                            user.put("Cant. Donaciones", 0);
+                            user.put("CantDonaciones", 0);
                             user.put("Celular", celular);
                             user.put("Tipo", "Donador");
                             user.put("Verificado", "Si");

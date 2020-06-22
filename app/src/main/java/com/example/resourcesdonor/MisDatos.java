@@ -23,8 +23,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class MisDatos extends AppCompatActivity {
 
-    TextView tv;
-    EditText nombre, apellido, correo, celular, direccion, direccionD;
+    TextView tv, correo;
+    EditText nombre, apellido, celular, direccion, direccionD;
     String tipo, userID;
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     FirebaseFirestore fStore = FirebaseFirestore.getInstance();

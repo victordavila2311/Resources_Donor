@@ -106,18 +106,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-    <EditText
+    <TextView
         android:id="@+id/correo_u"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
-        android:layout_marginTop="20dp"
-        android:inputType="text"
+        android:layout_marginTop="30dp"
+        android:autofillHints=""
         android:text="@string/correo"
-        android:textSize="16sp"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apellido_u"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/apellido_u" />
 
     <TextView
         android:id="@+id/textView16"
@@ -136,13 +136,13 @@
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints=""
         android:inputType="text"
         android:text="@string/celular"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/correo_u"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/correo_u" />
 
     <TextView
         android:id="@+id/textView17"
