@@ -1,5 +1,6 @@
 package com.example.resourcesdonor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,13 +8,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * En este activity se muestran los datos del usuario
@@ -23,8 +30,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class MisDatos extends AppCompatActivity {
 
-    TextView tv, correo;
-    EditText nombre, apellido, celular, direccion, direccionD;
+    TextView tv, correo, direccionD;
+    EditText nombre, apellido, celular, direccion;
     String tipo, userID;
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -73,6 +80,47 @@ public class MisDatos extends AppCompatActivity {
                         if(tipo.equals("Beneficiario")){
                             direccionD.setText(u.getDireccionD());
                         }
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * Boton que ejecuta la actualizacion de la base de datos Firebase <br/>
+     * realizando un algoritmo para simula lo que seria en SQL un <br/>
+     * SELECT * FROM usuarios WHERE id = userID <br/>
+     * con el dRef.update(map) se pasa el hashmap y se revisan y actualizan <br/>
+     * solo los campos nombrados en el hashmap
+     * @param view -unused
+     */
+    public void Actualizar(View view){
+        user.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(QueryDocumentSnapshot qds : queryDocumentSnapshots){
+                    UsuariosClass u = qds.toObject(UsuariosClass.class);
+                    String id = qds.getId();
+                    if(id.equals(userID)){
+                        DocumentReference dRef = FirebaseFirestore.getInstance()
+                                .collection("usuarios")
+                                .document(id);
+                        Map<String,Object> map = new HashMap<>();
+                        map.put("Nombre",nombre.getText().toString());
+                        map.put("Apellido", apellido.getText().toString());
+                        map.put("Celular", celular.getText().toString());
+                        map.put("Direccion", direccion.getText().toString());
+                        dRef.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(MisDatos.this, "Actualizado", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MisDatos.this, "Fallo por "+e, Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                 }
             }
